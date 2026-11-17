@@ -1,0 +1,224 @@
+EJECUCION.txt - Salida en consola del prototipo RPG por turnos
+Comando: java -cp target/classes com.rpg.ui.Main --seed=<N>   (la semilla hace las corridas reproducibles)
+
+################################################################
+# CORRIDA 1: Mago + Espada, Veneno, Bendición vs Goblin
+# Entrada simulada: Aria
+2
+1,3,5
+1
+
+################################################################
+=== RPG POR TURNOS (Strategy + Factory Method + Decorator) ===
+Semilla aleatoria: 7
+Nombre: Aria
+Clases: 1) Guerrero  2) Mago  3) Arquero  4) Pícaro
+Clase: 2
+Equipamiento (separado por comas, orden de aplicación; vacío = nada):
+  1) Espada (+10 ATK)
+  2) Armadura (+8 DEF)
+  3) Veneno (+5 ATK, DOT)
+  4) Amuleto de regeneración (+3 DEF, +2 HP/turno)
+  5) Bendición (+15% atributos)
+Equipamiento: 1,3,5
+Enemigos: 1) Goblin  2) Orco  3) Dragón
+Enemigo: 1
+
+Héroe: Aria (base) + Espada + Veneno + Bendición  [Mago]
+ATK: 40 | DEF: 12 | VEL: 17 | HP: 100
+Enemigo: Goblin salvaje | ATK: 13 | DEF: 5 | VEL: 12 | HP: 60
+
+=== COMBATE INICIADO ===
+
+--- TURNO 1 ---
+Aria (base) + Espada + Veneno + Bendición usa AtaqueHechizo sobre Goblin salvaje
+  Daño: 40 | Efecto: hechizo + veneno
+  Goblin salvaje HP: 60 -> 20
+Goblin salvaje (base) usa AtaquePunalada sobre Aria
+  Daño: 1 | Efecto: puñalada
+  Aria HP: 100 -> 99
+  * Goblin salvaje sufre 3 de daño por veneno (20 -> 17, quedan 2 turnos)
+  [Estado] Aria: 99/100 HP | Goblin salvaje: 17/60 HP
+
+--- TURNO 2 ---
+Aria (base) + Espada + Veneno + Bendición usa AtaqueHechizo sobre Goblin salvaje
+  Daño: 40 | Efecto: hechizo + veneno
+  Goblin salvaje HP: 17 -> 0
+  [Estado] Aria: 99/100 HP | Goblin salvaje: 0/60 HP
+
+=== COMBATE FINALIZADO ===
+Ganador: Aria (base) + Espada + Veneno + Bendición (HP restante: 99)
+*** VICTORIA ***
+
+--- ESTADÍSTICAS FINALES ---
+Turnos jugados: 2
+Aria: daño directo 57 | críticos 0
+Goblin salvaje: daño directo 1 | críticos 0
+
+
+################################################################
+# CORRIDA 2: Guerrero + Armadura, Amuleto, Espada vs Orco
+# Entrada simulada: Thorin
+1
+2,4,1
+2
+
+################################################################
+=== RPG POR TURNOS (Strategy + Factory Method + Decorator) ===
+Semilla aleatoria: 21
+Nombre: Thorin
+Clases: 1) Guerrero  2) Mago  3) Arquero  4) Pícaro
+Clase: 1
+Equipamiento (separado por comas, orden de aplicación; vacío = nada):
+  1) Espada (+10 ATK)
+  2) Armadura (+8 DEF)
+  3) Veneno (+5 ATK, DOT)
+  4) Amuleto de regeneración (+3 DEF, +2 HP/turno)
+  5) Bendición (+15% atributos)
+Equipamiento: 2,4,1
+Enemigos: 1) Goblin  2) Orco  3) Dragón
+Enemigo: 2
+
+Héroe: Thorin (base) + Armadura + Amuleto + Espada  [Guerrero]
+ATK: 28 | DEF: 25 | VEL: 8 | HP: 120
+Enemigo: Orco bruto | ATK: 17 | DEF: 8 | VEL: 9 | HP: 90
+
+=== COMBATE INICIADO ===
+
+--- TURNO 1 ---
+Orco bruto (base) usa AtaqueEspada sobre Thorin
+  Daño: 1 | Efecto: espada
+  Thorin HP: 120 -> 119
+Thorin (base) + Armadura + Amuleto + Espada usa AtaqueEspada sobre Orco bruto
+  Daño: 20 | Efecto: espada
+  Orco bruto HP: 90 -> 70
+  * Thorin regenera 1 HP (119 -> 120)
+  [Estado] Thorin: 120/120 HP | Orco bruto: 70/90 HP
+
+--- TURNO 2 ---
+Orco bruto (base) usa AtaqueEspada sobre Thorin
+  Daño: 1 | Efecto: espada
+  Thorin HP: 120 -> 119
+Thorin (base) + Armadura + Amuleto + Espada usa AtaqueEspada sobre Orco bruto
+  Daño: 20 | Efecto: espada
+  Orco bruto HP: 70 -> 50
+  * Thorin regenera 1 HP (119 -> 120)
+  [Estado] Thorin: 120/120 HP | Orco bruto: 50/90 HP
+
+--- TURNO 3 ---
+Orco bruto (base) usa AtaqueEspada sobre Thorin
+  Daño: 1 | Efecto: espada
+  Thorin HP: 120 -> 119
+Thorin (base) + Armadura + Amuleto + Espada usa AtaqueEspada sobre Orco bruto
+  Daño: 20 | Efecto: espada
+  Orco bruto HP: 50 -> 30
+  * Thorin regenera 1 HP (119 -> 120)
+  [Estado] Thorin: 120/120 HP | Orco bruto: 30/90 HP
+
+--- TURNO 4 ---
+Orco bruto (base) usa AtaqueEspada sobre Thorin
+  Daño: 2 (¡CRÍTICO!) | Efecto: espada
+  Thorin HP: 120 -> 118
+Thorin (base) + Armadura + Amuleto + Espada usa AtaqueEspada sobre Orco bruto
+  Daño: 20 | Efecto: espada
+  Orco bruto HP: 30 -> 10
+  * Thorin regenera 2 HP (118 -> 120)
+  [Estado] Thorin: 120/120 HP | Orco bruto: 10/90 HP
+
+--- TURNO 5 ---
+Orco bruto (base) usa AtaqueEspada sobre Thorin
+  Daño: 1 | Efecto: espada
+  Thorin HP: 120 -> 119
+Thorin (base) + Armadura + Amuleto + Espada usa AtaqueEspada sobre Orco bruto
+  Daño: 20 | Efecto: espada
+  Orco bruto HP: 10 -> 0
+  [Estado] Thorin: 119/120 HP | Orco bruto: 0/90 HP
+
+=== COMBATE FINALIZADO ===
+Ganador: Thorin (base) + Armadura + Amuleto + Espada (HP restante: 119)
+*** VICTORIA ***
+
+--- ESTADÍSTICAS FINALES ---
+Turnos jugados: 5
+Thorin: daño directo 90 | críticos 0
+Orco bruto: daño directo 6 | críticos 1
+
+
+################################################################
+# CORRIDA 3: Pícaro + Veneno, Bendición vs Dragón
+# Entrada simulada: Sombra
+4
+3,5
+3
+
+################################################################
+=== RPG POR TURNOS (Strategy + Factory Method + Decorator) ===
+Semilla aleatoria: 5
+Nombre: Sombra
+Clases: 1) Guerrero  2) Mago  3) Arquero  4) Pícaro
+Clase: 4
+Equipamiento (separado por comas, orden de aplicación; vacío = nada):
+  1) Espada (+10 ATK)
+  2) Armadura (+8 DEF)
+  3) Veneno (+5 ATK, DOT)
+  4) Amuleto de regeneración (+3 DEF, +2 HP/turno)
+  5) Bendición (+15% atributos)
+Equipamiento: 3,5
+Enemigos: 1) Goblin  2) Orco  3) Dragón
+Enemigo: 3
+
+Héroe: Sombra (base) + Veneno + Bendición  [Pícaro]
+ATK: 24 | DEF: 7 | VEL: 23 | HP: 85
+Enemigo: Dragón ancestral | ATK: 19 | DEF: 10 | VEL: 11 | HP: 150
+
+=== COMBATE INICIADO ===
+
+--- TURNO 1 ---
+Sombra (base) + Veneno + Bendición usa AtaquePunalada sobre Dragón ancestral
+  Daño: 14 | Efecto: puñalada + veneno
+  Dragón ancestral HP: 150 -> 136
+Dragón ancestral (base) usa AtaqueHechizo sobre Sombra
+  Daño: 29 (¡CRÍTICO!) | Efecto: hechizo
+  Sombra HP: 85 -> 56
+  * Dragón ancestral sufre 3 de daño por veneno (136 -> 133, quedan 2 turnos)
+  [Estado] Sombra: 56/85 HP | Dragón ancestral: 133/150 HP
+
+--- TURNO 2 ---
+Sombra (base) + Veneno + Bendición usa AtaquePunalada sobre Dragón ancestral
+  Daño: 14 | Efecto: puñalada + veneno
+  Dragón ancestral HP: 133 -> 119
+Dragón ancestral (base) usa AtaqueHechizo sobre Sombra
+  Daño: 19 | Efecto: hechizo
+  Sombra HP: 56 -> 37
+  * Dragón ancestral sufre 3 de daño por veneno (119 -> 116, quedan 2 turnos)
+  [Estado] Sombra: 37/85 HP | Dragón ancestral: 116/150 HP
+
+--- TURNO 3 ---
+Sombra (base) + Veneno + Bendición usa AtaquePunalada sobre Dragón ancestral
+  Daño: 14 | Efecto: puñalada + veneno
+  Dragón ancestral HP: 116 -> 102
+Dragón ancestral (base) usa AtaqueHechizo sobre Sombra
+  Daño: 19 | Efecto: hechizo
+  Sombra HP: 37 -> 18
+  * Dragón ancestral sufre 3 de daño por veneno (102 -> 99, quedan 2 turnos)
+  [Estado] Sombra: 18/85 HP | Dragón ancestral: 99/150 HP
+
+--- TURNO 4 ---
+Sombra (base) + Veneno + Bendición usa AtaquePunalada sobre Dragón ancestral
+  Daño: 14 | Efecto: puñalada + veneno
+  Dragón ancestral HP: 99 -> 85
+Dragón ancestral (base) usa AtaqueHechizo sobre Sombra
+  Daño: 19 | Efecto: hechizo
+  Sombra HP: 18 -> 0
+  [Estado] Sombra: 0/85 HP | Dragón ancestral: 85/150 HP
+
+=== COMBATE FINALIZADO ===
+Ganador: Dragón ancestral (base) (HP restante: 85)
+*** DERROTA ***
+
+--- ESTADÍSTICAS FINALES ---
+Turnos jugados: 4
+Sombra: daño directo 56 | críticos 0
+Dragón ancestral: daño directo 85 | críticos 1
+
+
